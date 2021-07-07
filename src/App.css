@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+.signup, .signin{
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(45deg, #01ffff, #173479 );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.signup_container, .signin_container{
+  width: 50%;
+  color: whitesmoke;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ant-menu-overflow {
+  display: flex;
+  justify-content: flex-end;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+  background-color: #173479;
+}
+.ant-menu-horizontal > .ant-menu-item a:hover {
+  color: rgb(23, 52, 121, 0.5);
+}
+.manager{
+  width: 100vw;
+  height: 95vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
-
-.App-link {
-  color: #61dafb;
+.admin{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.edittask{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+}
+.edittask_container{
+  width: 50%;
+  color: whitesmoke;
 }
