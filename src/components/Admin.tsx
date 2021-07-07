@@ -154,9 +154,9 @@ const Admin = () => {
 
 	console.log(adminTasksData);
 
-	// if (!authUser) {
-	// 	return <Redirect to='/' />
-	// }
+	if (!user) {
+		<Redirect to="/"></Redirect>;
+	}
 
 	return (
 		<div className="admin">

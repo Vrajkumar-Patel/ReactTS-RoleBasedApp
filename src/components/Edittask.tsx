@@ -68,10 +68,6 @@ const Edittask: React.FC = () => {
 
 	};
 
-	if (!authUser) {
-		return <Redirect to='/' />
-	}
-
 	if (!taskDetails) {
 		return <Redirect to="/admin" />;
 	}

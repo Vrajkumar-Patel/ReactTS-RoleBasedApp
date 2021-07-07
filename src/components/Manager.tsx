@@ -4,34 +4,20 @@ import { auth, database } from "../fire";
 import { managerDataType } from "./Admin";
 import { useDispatch, useSelector } from "react-redux";
 import { StateType } from "../redux/store";
-import { Redirect } from 'react-router-dom'
-import { setUser } from "../redux/UserReducer";
 
 const Manager: React.FC = () => {
 	const [managerDetails, setManagerDetails] = useState<managerDataType>();
 	const { user, userData } = useSelector((state: StateType) => state.user);
 	const [show, setShow] = useState<boolean>(false);
 	const dispatch = useDispatch();
-	const [authUser, setAuthUser] = useState<any>();
 
-	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			if (user) {
-				if (user.email !== null && user.uid !== null) {
-					dispatch(
-						setUser({
-							email: user.email,
-							uid: user.uid,
-						})
-					);
-				}
-				setAuthUser(user);
-			} else {
-				dispatch(setUser(undefined));
-				setAuthUser(undefined);
-			}
-		});
-	}, []);
+	// useEffect(() => {
+	//     console.log(user?.uid);
+	//     database.ref(`Manager/${user?.uid}`).on('value', (snap) => {
+	//         console.log(snap.val());
+
+	//     })
+	// }, []);
 
 	const showManagerData = () => {
 		setShow(true);
@@ -41,9 +27,7 @@ const Manager: React.FC = () => {
 		});
 	};
 
-	if (!authUser) {
-		return <Redirect to='/' />
-	}
+	// console.log(managerDetails);
 
 	return (
 		<div className="manager" style={{ background: "whitesmoke" }}>
