@@ -16,6 +16,7 @@ const Edittask: React.FC = () => {
 
   const [authUser, setAuthUser] = useState<any>();
   const [taskDetail, setTaskDetail] = useState<any>();
+  const [mainPageTask, setMainPageTask] = useState<any>();
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -46,7 +47,6 @@ const Edittask: React.FC = () => {
           setTaskDetail(snap.val());
         });
     }
-    console.log(taskDetail);
 
     if (authUser) {
       database.ref(`Admin/${authUser.uid}/tasks/${taskkey}`).set({
@@ -55,7 +55,16 @@ const Edittask: React.FC = () => {
         taskKey: taskkey,
         task: task,
       });
-    }
+    }   
+    database.ref(`Tasks/${taskkey}`).on('value', (snap) => setMainPageTask(snap.val()))
+    database.ref(`Tasks/${taskkey}`).set({
+      from: mainPageTask.from,
+      task: task,
+      to: mainPageTask.to,
+      userId: mainPageTask.userId
+    })
+    
+   
 
     history.push("/admin");
   };

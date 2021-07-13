@@ -20,10 +20,6 @@ const Manager: React.FC = () => {
     });
   };
 
-  if (!user) {
-    return <Redirect to="/"></Redirect>;
- }
-
   return (
     <div className="manager" style={{ background: "whitesmoke" }}>
       <Button type="primary" onClick={showManagerData}>

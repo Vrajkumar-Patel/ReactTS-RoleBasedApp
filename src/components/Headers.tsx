@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../redux/UserReducer";
 import { StateType } from "../redux/store";
 import { auth } from "../fire";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const { Header } = Layout;
@@ -17,6 +17,9 @@ const styles = {
 };
 
 const Headers: React.FC = () => {
+
+  const history = useHistory();
+
   const dispatch = useDispatch();
   const { user, userData } = useSelector((state: StateType) => state.user);
 
@@ -37,11 +40,10 @@ const Headers: React.FC = () => {
     });
   }, []);
 
-  console.log(userData);
-
   const handleSignOut = () => {
     auth.signOut();
-    toast.success("Sign Out Successful");
+    toast.success("Sign Out Successful"); 
+    return history.push('/');
   };
 
   return (

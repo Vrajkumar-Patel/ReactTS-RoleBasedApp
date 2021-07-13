@@ -17,8 +17,6 @@ import { StateType } from "./redux/store";
 function App() {
   const { user, userData } = useSelector((state: StateType) => state.user);
 
-  console.log(user);
-
   return (
     <div className="App">
       <Router>

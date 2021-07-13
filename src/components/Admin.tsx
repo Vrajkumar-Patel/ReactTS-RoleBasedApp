@@ -64,7 +64,6 @@ const Admin = () => {
 
   useEffect(() => {
     database.ref(`Manager`).on("value", (snap) => {
-      console.log(snap.val());
       let newArray: managerDataType[] = [];
       snap.forEach((managerData) => {
         if (managersData === []) {
@@ -83,11 +82,8 @@ const Admin = () => {
 
     database.ref(`users/${userId}`).on("value", (snap) => {
       const { username } = snap.val();
-      console.log(username);
       setUsername(username);
     });
-
-    console.log(username);
 
     var taskKey = database.ref(`Admin/${authUser?.uid}/tasks`).push().key;
     database.ref(`Admin/${authUser?.uid}/tasks/${taskKey}`).set({
@@ -106,7 +102,6 @@ const Admin = () => {
 
     let newAdminTaskArray: AdminTaskType[] = [];
     database.ref(`Admin/${authUser?.uid}/tasks`).on("value", (snap) => {
-      console.log(snap.val());
 
       snap.forEach((childSnap) => {
         if (newAdminTaskArray === []) {
@@ -131,8 +126,6 @@ const Admin = () => {
       if (authUser?.uid) {
         let newAdminTaskArray: AdminTaskType[] = [];
         database.ref(`Admin/${authUser?.uid}/tasks`).on("value", (snap) => {
-          console.log(snap.val());
-
           snap.forEach((childSnap) => {
             if (newAdminTaskArray === []) {
               newAdminTaskArray = [childSnap.val()];
@@ -150,11 +143,9 @@ const Admin = () => {
     }
   };
 
-  console.log(adminTasksData);
-
-  if (!user) {
-    return <Redirect to="/"></Redirect>;
-  }
+  // if (!user) {
+  //   return <Redirect to="/"></Redirect>;
+  // }
 
   return (
     <div className="admin">

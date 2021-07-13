@@ -78,14 +78,16 @@ const Signup: React.FC = () => {
               })
             );
           }
-          if (role === "Admin") {
+          if (role && role === "Admin") {
+            toast.success("Sign up Successful");
             return history.push("/admin");
           } else if (role === "Manager") {
+            toast.success("Sign up Successful");
             return history.push("/manager");
           } else {
+            toast.success("Sign up Successful");
             return history.push("/customer");
           }
-          toast.success("Sign up Successful");
         })
         .catch((error) => {
           console.error(error.message);

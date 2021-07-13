@@ -37,8 +37,6 @@ const AdminTable: React.FC<Props> = ({ adminTasksData, setAdminTasksData }) => {
     });
   }, []);
 
-  console.log(adminTasksData);
-
   const handleDelete = (task: string, taskKey: string, userId: string) => {
     try {
       if (authUser.uid) {

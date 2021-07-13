@@ -9,14 +9,11 @@ const Home: React.FC = () => {
   const [totalTasks, setTotalTasks] = useState();
 
   const tasksArray = Object.keys(adminData);
-  console.log(tasksArray);
 
   const getData = () => {
     setShow(true);
 
     database.ref("Tasks").on("value", (snap) => {
-      // console.log(snap.val());
-      // setAdminData(snap.val());
     });
   };
 

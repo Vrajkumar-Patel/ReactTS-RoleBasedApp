@@ -48,19 +48,17 @@ const Signin: React.FC = () => {
         })
         .catch((error) => toast.error(error.message));
     }
-    console.log(userDetails);
     if (userDetails?.role === "Admin") {
       history.push("/admin");
     } else if (userDetails?.role === "Manager") {
       history.push("/manager");
     } else if (userDetails?.role === "Customer") {
       history.push("/customer");
-    } else {
-      alert("Can't find data, please try again");
     }
+    // else {
+    //   alert("Can't find data, please try again");
+    // }
   };
-
-  console.log(userDetails);
 
   return (
     <div className="signin">

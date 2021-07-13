@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Table } from "antd";
 import { database } from "../fire";
+import toast from "react-hot-toast";
 
 type Data = {
   from: string;
@@ -14,13 +15,15 @@ const Main: React.FC = () => {
 
   const getData = () => {
     database.ref(`Tasks`).on("value", (snap) => {
-      const newArray: Data[] = Object.values(snap.val());
-      // console.log(newArray);
-      setTasksArray(newArray);
+      if (snap.val()) {
+        const newArray: Data[] = Object.values(snap.val());
+        setTasksArray(newArray);
+      }
+      else {
+        toast.error("There are no Tasks created by Admin...")
+      }
     });
   };
-
-  console.log(tasksArray);
 
   const data = tasksArray;
 
@@ -29,11 +32,6 @@ const Main: React.FC = () => {
       title: "From",
       dataIndex: "from",
       key: "from",
-    },
-    {
-      title: "To",
-      dataIndex: "to",
-      key: "to",
     },
     {
       title: "Task",

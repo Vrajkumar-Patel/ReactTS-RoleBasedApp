@@ -15,18 +15,10 @@ const Customer: React.FC = () => {
   const showCustomerData = () => {
     database.ref(`Customer/${user?.uid}`).on("value", (snap) => {
       let customerData = snap.val();
-      console.log(customerData);
       setCustomerDetails(customerData);
     });
     setShow(true);
   };
-
-  console.log(user);
-  // console.log(customerDetails) ;
-
-  if (!user) {
-    return <Redirect to="/"></Redirect>;
-  }
 
   return (
     <div className="manager" style={{ background: "whitesmoke" }}>
