@@ -38,6 +38,10 @@ const Signin: React.FC = () => {
       auth
         .signInWithEmailAndPassword(email, password)
         .then(({ user }) => {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ email: user?.email, uid: user?.uid })
+          );
           database.ref(`users/${user?.uid}`).on("value", (snap) => {
             setUserDetails(snap.val());
           });
@@ -55,6 +59,8 @@ const Signin: React.FC = () => {
       alert("Can't find data, please try again");
     }
   };
+
+  console.log(userDetails);
 
   return (
     <div className="signin">

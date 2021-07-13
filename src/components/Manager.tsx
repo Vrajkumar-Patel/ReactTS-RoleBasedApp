@@ -4,6 +4,7 @@ import { auth, database } from "../fire";
 import { managerDataType } from "./Admin";
 import { useDispatch, useSelector } from "react-redux";
 import { StateType } from "../redux/store";
+import { Redirect } from "react-router-dom";
 
 const Manager: React.FC = () => {
   const [managerDetails, setManagerDetails] = useState<managerDataType>();
@@ -19,12 +20,16 @@ const Manager: React.FC = () => {
     });
   };
 
+  if (!user) {
+    return <Redirect to="/"></Redirect>;
+ }
+
   return (
     <div className="manager" style={{ background: "whitesmoke" }}>
       <Button type="primary" onClick={showManagerData}>
         Get Data
       </Button>
-      {show ? (
+      {show && managerDetails  ? (
         <Card
           title={managerDetails?.username}
           bordered

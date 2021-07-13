@@ -11,8 +11,14 @@ import Customer from "./components/Customer";
 import Edittask from "./components/Edittask";
 import { auth } from "./fire";
 import Headers from "./components/Headers";
+import { useDispatch, useSelector } from "react-redux";
+import { StateType } from "./redux/store";
 
 function App() {
+  const { user, userData } = useSelector((state: StateType) => state.user);
+
+  console.log(user);
+
   return (
     <div className="App">
       <Router>

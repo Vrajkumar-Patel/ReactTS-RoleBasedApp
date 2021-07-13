@@ -36,6 +36,7 @@ export type managerDataType = {
 const Admin = () => {
   const dispatch = useDispatch();
   const { user, userData } = useSelector((state: StateType) => state.user);
+  const [form] = Form.useForm();
 
   const [authUser, setAuthUser] = useState<any>();
   const [managersData, setManagersData] = useState<managerDataType[]>();
@@ -152,13 +153,14 @@ const Admin = () => {
   console.log(adminTasksData);
 
   if (!user) {
-    <Redirect to="/"></Redirect>;
+    return <Redirect to="/"></Redirect>;
   }
 
   return (
     <div className="admin">
       <h1 style={{ textAlign: "center" }}>Add Tasks </h1>
       <Form
+        form={form}
         name="Add_Tasks_Form"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 8 }}

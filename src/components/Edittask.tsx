@@ -12,6 +12,7 @@ const Edittask: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const taskDetails = useSelector((state: StateType) => state.user.editTask);
+  const { user, userData } = useSelector((state: StateType) => state.user);
 
   const [authUser, setAuthUser] = useState<any>();
   const [taskDetail, setTaskDetail] = useState<any>();
@@ -62,6 +63,10 @@ const Edittask: React.FC = () => {
   if (!taskDetails) {
     return <Redirect to="/admin" />;
   }
+
+  if (!user) {
+    return <Redirect to="/"></Redirect>;
+ }
 
   return (
     <div className="edittask">

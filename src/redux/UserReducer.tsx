@@ -28,8 +28,8 @@ export interface CounterState {
 }
 
 const initialState: CounterState = {
-  user: undefined,
-  userData: undefined,
+  user: JSON.parse(localStorage.getItem('user')!),
+  userData: JSON.parse(localStorage.getItem('userData')!),
   editTask: undefined,
 };
 

@@ -39,6 +39,10 @@ const Signup: React.FC = () => {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then(({ user }) => {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ email: user?.email, uid: user?.uid })
+          );
           database.ref(`users/${user?.uid}`).set({
             username: name,
             email,
@@ -54,6 +58,16 @@ const Signup: React.FC = () => {
             userId: user?.uid,
           });
           if (user) {
+            localStorage.setItem(
+              "userData",
+              JSON.stringify({
+                username: name,
+                email: email,
+                role: role,
+                age: age,
+                userId: user?.uid,
+              })
+            );
             dispatch(
               setUserData({
                 username: name,
